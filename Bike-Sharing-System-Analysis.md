@@ -3,11 +3,6 @@ Bike Sharing System Analysis in South Korea
 Tan Kar Min
 2023-11-26
 
-``` r
-library(knitr)
-knitr::opts_chunk$set(fig.path='Figs/')
-```
-
 Import Essential Libraries
 
 ``` r
@@ -111,6 +106,11 @@ library(lubridate)
     ## The following objects are masked from 'package:base':
     ## 
     ##     date, intersect, setdiff, union
+
+``` r
+library(knitr)
+opts_chunk$set(dev='png')
+```
 
 ## Data Collection
 
@@ -560,7 +560,8 @@ ggplot(seoul_bike_sharing,aes(x=RENTED_BIKE_COUNT))+geom_histogram(fill="lightgr
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Figs/unnamed-chunk-15-1.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/distributionbikecount-1.png?raw=true)<!-- -->
+</br>
 
 The mode of bikes rented is about 250. The distribution is right skewed.
 
@@ -574,7 +575,7 @@ ggplot(seoul_bike_sharing, aes(TEMPERATURE,RENTED_BIKE_COUNT)) +
   geom_smooth(method="lm", formula = y ~ poly(x, 4), se = FALSE)
 ```
 
-![](Figs/unnamed-chunk-16-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 </br>
 
@@ -592,7 +593,7 @@ ggplot(seoul_bike_sharing, aes(HUMIDITY,RENTED_BIKE_COUNT)) +
   geom_smooth(method="lm", formula = y ~ poly(x, 2), se = FALSE)
 ```
 
-![](Figs/unnamed-chunk-17-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 </br>
 
@@ -609,7 +610,7 @@ ggplot(seoul_bike_sharing, aes(WIND_SPEED,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-18-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 </br>
 
@@ -625,7 +626,7 @@ ggplot(seoul_bike_sharing, aes(VISIBILITY,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-19-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 </br>
 
@@ -641,7 +642,7 @@ ggplot(seoul_bike_sharing, aes(DEW_POINT_TEMPERATURE,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-20-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 </br>
 
@@ -660,7 +661,7 @@ ggplot(seoul_bike_sharing, aes(SOLAR_RADIATION,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-21-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 </br>
 
@@ -675,7 +676,7 @@ ggplot(seoul_bike_sharing, aes(RAINFALL,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-22-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 ``` r
 df_rain<-seoul_bike_sharing%>%
@@ -687,7 +688,7 @@ ggplot(df_rain, aes(RAINFALL, AVG_BIKE))+
   labs(title = "Average Rented Bikes by Rainfall")
 ```
 
-![](Figs/unnamed-chunk-22-2.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
 
 </br>
 
@@ -703,7 +704,7 @@ ggplot(seoul_bike_sharing, aes(SNOWFALL,RENTED_BIKE_COUNT)) +
   geom_point()
 ```
 
-![](Figs/unnamed-chunk-23-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
 df_rain<-seoul_bike_sharing%>%
@@ -715,7 +716,7 @@ ggplot(df_rain, aes(SNOWFALL, AVG_BIKE))+
   labs(title = "Average Rented Bikes by Snowfall")
 ```
 
-![](Figs/unnamed-chunk-23-2.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->
 
 </br>
 
@@ -732,7 +733,8 @@ ggplot(seoul_bike_sharing, aes(DATE, RENTED_BIKE_COUNT, color=HOUR))+
   geom_point(alpha=0.8)
 ```
 
-![](Figs/unnamed-chunk-24-1.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+</br>
 
 1)  The number of rented bikes reaches its peak around mid-year and
     October, while it tends to be lower before April. This pattern
@@ -755,7 +757,8 @@ ggplot(seoul_bike_sharing, aes(HOUR, RENTED_BIKE_COUNT))+
   facet_wrap(~seoul_bike_sharing$SEASONS)
 ```
 
-![](Figs/unnamed-chunk-25-1.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+</br>
 
 The overall scale of bike rental counts does indeed vary with the
 seasons. Summer tends to have slightly higher average number of rented
@@ -1240,7 +1243,7 @@ qqnorm(residuals(lm_model_all_refined1, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined1, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-35-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined1), residuals(lm_model_all_refined1, type="deviance")/sqrt(phi),
@@ -1248,7 +1251,7 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-35-2.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->
 
 </br>
 
@@ -1343,7 +1346,7 @@ qqnorm(residuals(lm_model_all_refined2, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined2, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-36-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined2), residuals(lm_model_all_refined2, type="deviance")/sqrt(phi),
@@ -1351,7 +1354,7 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-36-2.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-35-2.png)<!-- -->
 
 </br>
 
@@ -1454,7 +1457,7 @@ qqnorm(residuals(lm_model_all_refined3, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined3, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-38-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined3), residuals(lm_model_all_refined3, type="deviance")/sqrt(phi),
@@ -1462,7 +1465,8 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-38-2.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->
+</br>
 
 The model performance is very similar to the previous version with an
 improved AIC and BIC.
@@ -1552,7 +1556,7 @@ qqnorm(residuals(lm_model_all_refined4, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined4, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-39-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined4), residuals(lm_model_all_refined4, type="deviance")/sqrt(phi),
@@ -1560,7 +1564,8 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-39-2.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-38-2.png)<!-- -->
+</br>
 
 The AIC and BIC has increased, and the Q-Q plot and residual plot remain
 unchanged. Therefore, we will stick to the previous model.
@@ -1674,7 +1679,7 @@ qqnorm(residuals(lm_model_all_refined5, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined5, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-41-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined5), residuals(lm_model_all_refined5, type="deviance")/sqrt(phi),
@@ -1682,7 +1687,7 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-41-2.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->
 
 </br>
 
@@ -1763,7 +1768,7 @@ qqnorm(residuals(lm_model_all_refined6, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined6, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-42-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-41-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined6), residuals(lm_model_all_refined6, type="deviance")/sqrt(phi),
@@ -1771,7 +1776,8 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-42-2.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-41-2.png)<!-- -->
+</br>
 
 The AIC and BIC significantly improved after adding a log link. The
 residual plot also significantly improved by showing a relatively
@@ -1793,7 +1799,8 @@ fit<-lm(t~s)
 abline(fit,col=2)
 ```
 
-![](Figs/unnamed-chunk-43-1.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-42-1.png)<!-- -->
+</br>
 
 The observation of a positive trend indicates that the variance function
 is assumed to increase too slowly with the mean. Consequently, it
@@ -1856,7 +1863,7 @@ qqnorm(residuals(lm_model_all_refined7, type="deviance")/sqrt(phi))
 qqline(residuals(lm_model_all_refined7, type="deviance")/sqrt(phi))
 ```
 
-![](Figs/unnamed-chunk-44-1.png)<!-- -->
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->
 
 ``` r
 plot(fitted(lm_model_all_refined7), residuals(lm_model_all_refined7, type="deviance")/sqrt(phi),
@@ -1864,7 +1871,8 @@ xlab="fitted values",
 ylab="standardised residuals")
 ```
 
-![](Figs/unnamed-chunk-44-2.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-43-2.png)<!-- -->
+</br>
 
 All variables are significant and the residuals are relatively randomly
 scattered.There is slight deviation in the Q-Q plot.
@@ -1883,7 +1891,8 @@ fit<-lm(t~s)
 abline(fit,col=2)
 ```
 
-![](Figs/unnamed-chunk-45-1.png)<!-- --> </br>
+![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-44-1.png)<!-- -->
+</br>
 
 No significant trend can be seen. This indicates that the Poisson
 distribution is a suitable choice.
