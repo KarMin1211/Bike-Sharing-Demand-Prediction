@@ -559,8 +559,9 @@ ggplot(seoul_bike_sharing,aes(x=RENTED_BIKE_COUNT))+geom_histogram(fill="lightgr
 ```
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+    "C:\Users\USER\Documents\study\Data\R capstone project (bike system analysis)\Bike-Sharing-System-Analysis_files"
 
-![](Bike-Sharing-System-Analysis_files/figure-gfm/distributionbikecount-1.png?raw=true)<!-- -->
+![](Users/USER/Documents/study/Data/R capstone project (bike system analysis)/Bike-Sharing-System-Analysis_files/figure-gfm/distributionbikecount-1.png?raw=true)<!-- -->
 </br>
 
 The mode of bikes rented is about 250. The distribution is right skewed.
@@ -575,7 +576,7 @@ ggplot(seoul_bike_sharing, aes(TEMPERATURE,RENTED_BIKE_COUNT)) +
   geom_smooth(method="lm", formula = y ~ poly(x, 4), se = FALSE)
 ```
 
-![](Bike-Sharing-System-Analysis_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](unnamed-chunk-15-1.png)<!-- -->
 
 </br>
 
