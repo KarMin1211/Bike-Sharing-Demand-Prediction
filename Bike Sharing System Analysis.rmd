@@ -2,7 +2,7 @@
 title: "Bike Sharing System Analysis in South Korea"
 author: "Tan Kar Min"
 date: "2023-11-26"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 Import Essential Libraries
