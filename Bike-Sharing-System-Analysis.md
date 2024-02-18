@@ -2059,7 +2059,7 @@ other_cities <- kr_cities %>%
   filter(CITY %in% c("Daejeon","Suwon","Goyang","Ansan"))
 
 cities<-other_cities$CITY
-populations<-as.vector(other_cities$`2024_POPULATION`)
+populations<-other_cities$`2024_POPULATION`
 ```
 
 We utilize the model to forecast bike rental demands for the next five
@@ -2071,7 +2071,7 @@ preliminary insights into the demands, as various additional factors may
 differ between cities, impacting the accuracy of the forecasts.
 
 ``` r
-for (i in c(2:length(cities))) {
+for (i in c(1:length(cities))) {
   x<-prediction(cities[i])
   x$pred<-pmin(round((x$pred/populations[1])*populations[i],0), 50000)
   KR_BIKE_PRED<-rbind(KR_BIKE_PRED,x)
